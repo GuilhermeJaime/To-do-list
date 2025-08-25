@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To‑Do List (Vanilla JS)</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="app card" role="application" aria-labelledby="appTitle">
+      <header>
+        <div>
+          <h1 id="appTitle">To‑Do List</h1>
+          <div class="muted">Vanilla JS • LocalStorage • Filtros • Edição inline</div>
+        </div>
+        <div class="row">
+          <button id="exportBtn" title="Exportar tarefas (JSON)">Exportar</button>
+          <button id="importBtn" class="ghost" title="Importar tarefas (JSON)">Importar</button>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <div class="input" aria-live="polite">
+          <span class="icon">➕</span>
+          <input id="newTask" type="text" placeholder="Adicionar nova tarefa e pressionar Enter…" autocomplete="off" />
+        </div>
+        <div class="row wrap">
+          <div class="filters" role="tablist" aria-label="Filtros">
+            <button data-filter="all" class="active" role="tab" aria-selected="true">Todas</button>
+            <button data-filter="active" role="tab" aria-selected="false">Ativas</button>
+            <button data-filter="done" role="tab" aria-selected="false">Concluídas</button>
+          </div>
+          <button id="clearCompleted" class="danger" title="Remover todas as concluídas">Limpar concluídas</button>
+        </div>
+      </div>
+
+      <ul id="list" aria-live="polite"></ul>
+
+      <footer>
+        <div id="counter" class="muted">0 tarefas</div>
+        <div class="muted">Dica: duplo‑clique no texto para editar • Esc para cancelar • Enter para guardar</div>
+      </footer>
+    </div>
+
+    <template id="item-template">
+      <li class="item" draggable="true">
+        <input class="check" type="checkbox" aria-label="Concluir tarefa" />
+        <div class="title">
+          <span class="txt"></span>
+          <input class="edit sr-only" type="text" />
+        </div>
+        <div class="actions">
+          <button class="editBtn" title="Editar">Editar</button>
+          <button class="deleteBtn" title="Apagar">Apagar</button>
+        </div>
+      </li>
+    </template>
+
+    <input id="fileInput" type="file" accept="application/json" hidden />
+
+    <script src="script.js"></script>
+  </body>
+
+</html>
